@@ -1,21 +1,9 @@
 package main
 
-import (
-	"fmt"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
-)
+import "github.com/JoaoBarreto255/GoBorrowMeABook/internal/router"
+import "github.com/JoaoBarreto255/GoBorrowMeABook/configs"
 
 func main() {
-	count := 0
-	r := gin.Default()
-	fmt.Println("Hello world!")
-	r.GET("/test", func(ctx *gin.Context) {
-		count += 1
-		fmt.Printf("Request [%4d]...\n", count)
-		ctx.JSON(http.StatusOK, gin.H{"message": "OK"})
-	})
-
-	r.Run()
+	logger := configs.GetLogger()
+	router.Initializer()
 }
